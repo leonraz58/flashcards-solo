@@ -1,0 +1,96 @@
+.root {
+  display: flex;
+  flex-direction: column;
+}
+
+.itemWrapper {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+
+  border-radius: 20px;
+
+  transition: background-color 0.4s;
+
+  &:focus-within {
+    background-color: var(--color-dark-700);
+    outline: none;
+  }
+
+  &:has(.item:hover) {
+    background-color: var(--color-dark-500);
+  }
+
+  &:has(.item:active) {
+    background-color: var(--color-accent-900);
+  }
+
+  &:has(.item:disabled) {
+    background-color: transparent;
+  }
+}
+
+.item {
+  cursor: pointer;
+
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  width: 16px;
+  height: 16px;
+
+  background-color: transparent;
+  border: 2px solid var(--color-accent-500);
+  border-radius: 20px;
+
+  &:focus-visible {
+    outline: 1px solid var(--color-light-100);
+    outline-offset: 3px;
+  }
+}
+
+.indicator::after {
+  content: '';
+
+  display: block;
+  flex-shrink: 0;
+
+  width: 8px;
+  height: 8px;
+
+  background-color: var(--color-accent-500);
+  border-radius: 50%;
+}
+
+.label {
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.disabled {
+  color: var(--color-light-900);
+
+  .radioSign,
+  .label {
+    cursor: unset;
+  }
+
+  .item {
+    border: 2px solid var(--color-accent-900);
+  }
+
+  .indicator::after {
+    background-color: var(--color-accent-900);
+  }
+}
